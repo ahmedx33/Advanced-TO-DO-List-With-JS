@@ -9,7 +9,11 @@ const mainTodos = document.querySelector("#app > .main .todos");
 export let todosArr = [];
 
 create.addEventListener("click", () => {
-  input.value !== "".trim() && addTodo(input.value);
+  const newTodoTitle = input?.value.trim();
+
+  if (newTodoTitle === "") return;
+  addTodo(input.value);
+
   input.value = "";
 });
 
@@ -33,6 +37,7 @@ function deleteTodo(ev) {
 
 export function showData() {
   mainTodos.innerHTML = "";
+
   todosArr.map((todo) => {
     const div = document.createElement("div");
     const checkBtn = document.createElement("button");
