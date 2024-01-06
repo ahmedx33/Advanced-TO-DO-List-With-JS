@@ -5,7 +5,7 @@ import deleteTodo from "./utils/deleteTodo";
 const input = document.getElementById("writeTodo");
 const create = document.querySelector(".main .add > button");
 const mainTodos = document.querySelector("#app > .main .todos");
-let todosArr = [];
+export let todosArr = [];
 
 create.addEventListener("click", () => {
   input.value !== "" && addTodo(input.value);
@@ -19,7 +19,7 @@ if (localStorage.getItem("todos") !== null) {
 
 
 
-export default function showData() {
+export function showData() {
   mainTodos.innerHTML = "";
   todosArr.map((todo) => {
     const div = document.createElement("div");

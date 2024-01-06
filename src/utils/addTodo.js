@@ -1,4 +1,4 @@
-import showData from "../main";
+import { showData, todosArr } from "../main";
 import setData from "./setData";
 
 export default function addTodo(todoText) {

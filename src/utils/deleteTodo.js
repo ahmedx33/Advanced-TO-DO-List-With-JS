@@ -1,4 +1,6 @@
-import showData from "../main";
+import { todosArr } from "../main";
+import setData from "./setData";
+
 
 export default function deleteTodo(ev) {
   if (ev.target.classList.contains("delete")) {

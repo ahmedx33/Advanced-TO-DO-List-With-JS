@@ -1,5 +1,6 @@
-import showData from "../main";
+import { showData, todosArr } from "../main";
 import setData from "./setData";
+
 export default function todoDone(ev) {
   todosArr.forEach((v) => {
     if (v.id === parseInt(ev.target.parentElement.getAttribute("id"))) {
