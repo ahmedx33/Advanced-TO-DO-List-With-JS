@@ -1,0 +1,68 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  ---radius: 8px
+}
+
+#app>.main {
+  background-color: #575757;
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+  border-radius: var(---radius);
+  -webkit-border-radius: var(---radius);
+  -moz-border-radius: var(---radius);
+  -ms-border-radius: var(---radius);
+  -o-border-radius: var(---radius);
+}
+
+.main>.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main>.add>input {
+  margin-right: 15px;
+}
+
+.main>.add>button {
+  cursor: pointer;
+}
+
+.main>.todos .todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  background-color: rgb(160, 160, 160);
+  padding: 15px;
+  border-radius: var(---radius);
+  -webkit-border-radius: var(---radius);
+  -moz-border-radius: var(---radius);
+  -ms-border-radius: var(---radius);
+  -o-border-radius: var(---radius);
+}
+
+.checked {
+  text-decoration: line-through !important;
+}
+
+.hidden {
+  display: none !important;
+}
