@@ -1,6 +1,7 @@
 import updateTodo from "./utils/updateTodo";
 import addTodo from "./utils/addTodo";
-import deleteTodo from "./utils/deleteTodo";
+import todoDone from "./utils/todoDone";
+import setData from "./utils/setData";
 
 const input = document.getElementById("writeTodo");
 const create = document.querySelector(".main .add > button");
@@ -8,7 +9,7 @@ const mainTodos = document.querySelector("#app > .main .todos");
 export let todosArr = [];
 
 create.addEventListener("click", () => {
-  input.value !== "" && addTodo(input.value);
+  input.value !== "".trim() && addTodo(input.value);
   input.value = "";
 });
 
@@ -17,12 +18,33 @@ if (localStorage.getItem("todos") !== null) {
   showData();
 }
 
+function deleteTodo(ev) {
+  if (ev.target.classList.contains("delete")) {
+    ev.target.parentElement.remove();
+  }
+  const newArr = todosArr.filter(
+    (v) => v.id !== parseInt(ev.target.parentElement.getAttribute("id"))
+  );
+  todosArr = newArr;
+  setData(newArr);
 
+  showData();
+}
 
 export function showData() {
   mainTodos.innerHTML = "";
   todosArr.map((todo) => {
     const div = document.createElement("div");
+    const checkBtn = document.createElement("button");
+    const updateTodoBtn = document.createElement("button");
+    const deleteTodoBtn = document.createElement("button");
+    checkBtn.textContent = "done";
+    updateTodoBtn.textContent = "update";
+    deleteTodoBtn.textContent = "delete";
+
+    checkBtn.addEventListener("click", (ev) => todoDone(ev));
+    updateTodoBtn.addEventListener("click", (ev) => updateTodo(ev));
+    deleteTodoBtn.addEventListener("click", (ev) => deleteTodo(ev));
     div.className = "todo";
     div.setAttribute("id", todo.id);
 
@@ -32,13 +54,13 @@ export function showData() {
         <input type="text" />
         <button>submit</button>
       </div>
-      <button class="checkBtn " onclick="todoDone(event)"">done</button> 
-      <button onclick="updateTodo(event)">update</button>
-      <button class="delete" onclick="deleteTodo(event)">delete</button>`;
+      `;
     div.innerHTML = todoContent;
+
+    div.appendChild(checkBtn);
+    div.appendChild(updateTodoBtn);
+    div.appendChild(deleteTodoBtn);
 
     mainTodos.appendChild(div);
   });
 }
-
-
